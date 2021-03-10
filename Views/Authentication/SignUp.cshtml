@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+<h4>Регистрация</h4>
+@using (Html.BeginForm("SignUp", "Home"))
+{
+    <div>
+        Логин
+        @Html.TextBox("login")
+    </div>
+    <br />
+
+    <div>
+        Пароль
+        @Html.Password("password")
+    </div>
+    <br />
+
+    <input type="submit" value="Зарегистрироваться" />
+}

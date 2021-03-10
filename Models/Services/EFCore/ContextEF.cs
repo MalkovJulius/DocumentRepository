@@ -19,8 +19,7 @@ namespace DocumentRepository.Models.Services.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //возможно проблема в том, что на метанит использовался в NuGet EntityFrameworkCore.SqlServer
-            //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=DocumentRepository;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=DocumentRepository;Trusted_Connection=True;");
         }
     }
 }
