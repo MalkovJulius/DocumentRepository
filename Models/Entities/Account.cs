@@ -14,10 +14,12 @@ namespace DocumentRepository.Models.Entities
         [Display(Name = "Id")]
         public virtual int Id { get; set; }
 
+        [Required]
         [Display(Name = "Логин аккаунта")]
         public virtual string Login { get; set; }
 
-        [Display(Name = "Зашифрованный пароль")]
+        [Required]
+        [Display(Name = "Зашифрованный пароль")]        
         public virtual string CryptedPassword { get; set; }
 
         [Display(Name = "Ссылка на список сущностей Document")]
