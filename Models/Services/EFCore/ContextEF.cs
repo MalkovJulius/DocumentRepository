@@ -18,6 +18,7 @@ namespace DocumentRepository.Models.Services.EFCore
 
         public ContextEF()
         {
+            //При использовании миграции требуется убрать данный метод
             Database.EnsureCreated();
             logger = new StreamWriter("ErrorLog.txt", true);
         }
