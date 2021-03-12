@@ -15,6 +15,7 @@ namespace DocumentRepository.Models.Entities
         public virtual int Id { get; set; }
 
         [Required]
+        [MaxLength(50)]
         [Display(Name = "Логин аккаунта")]
         public virtual string Login { get; set; }
 

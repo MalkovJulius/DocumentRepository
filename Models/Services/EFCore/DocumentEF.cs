@@ -18,8 +18,8 @@ namespace DocumentRepository.Models.Services.EFCore
                 DocumentType = DocumentType.Word,
                 Author = new Account(),
                 Name = "",
-                File = file.ToList(),
-                DateTime = DateTime.UtcNow
+                File = file//,
+                //DateCreated = DateTime.UtcNow
             };
             //TODO: fill documet from file and something else data like Author or DocumentType
 
@@ -59,7 +59,7 @@ namespace DocumentRepository.Models.Services.EFCore
                         {
                             Id = doc.Id,
                             Name = doc.Name,
-                            DateTime = doc.DateTime,
+                            DateTime = doc.DateCreated,
                             DocumentType = DocumentType.Word, // it's temp solution
                             File = doc.File
                         })
@@ -80,7 +80,7 @@ namespace DocumentRepository.Models.Services.EFCore
                         {
                             Id = doc.Id,
                             Name = doc.Name,
-                            DateTime = doc.DateTime,
+                            DateTime = doc.DateCreated,
                             DocumentType = DocumentType.Word, // it's temp solution
                             File = doc.File
                         })

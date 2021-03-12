@@ -32,7 +32,10 @@ namespace DocumentRepository.Models.Services.EFCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //использование Fluent API
-            base.OnModelCreating(modelBuilder);
+            /*modelBuilder.Entity<Document>()
+                .Property(doc => doc.DateCreated)
+                .HasDefaultValueSql("GETDATE()");
+            base.OnModelCreating(modelBuilder);*/
         }
 
         public override void Dispose()

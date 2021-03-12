@@ -19,8 +19,9 @@ namespace DocumentRepository.Models.Entities
         [Display(Name = "Название документа")]
         public virtual string Name { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Дата создания")]
-        public virtual DateTime DateTime { get; set; }
+        public virtual DateTime DateCreated { get; set; }
 
         [Required]
         //[Column("Account")] это не точно надо проверить
