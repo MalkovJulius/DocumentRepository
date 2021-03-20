@@ -1,6 +1,7 @@
 ﻿using DocumentRepository.Models;
 using DocumentRepository.Models.Services;
 using DocumentRepository.Models.Services.EFCore;
+using DocumentRepository.Models.Services.Abstracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -47,7 +48,7 @@ namespace DocumentRepository.Controllers
 
 
 
-        readonly IDocument _document = new DocumentEF();
+        readonly IDocumentRep _document = new DocumentEF();
         //если использовать фабрику, то тут сделать конструктор с IDocument
 
 

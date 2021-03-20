@@ -12,6 +12,12 @@ namespace DocumentRepository.Models.Entities
     /// </summary>
     public class Document
     {
+        //public Document()
+        //{
+        //    DateCreated = DateTime.UtcNow;//может так лучше
+        //}
+
+        [Required]
         [Display(Name = "Id")]
         public virtual int Id { get; set; }
 

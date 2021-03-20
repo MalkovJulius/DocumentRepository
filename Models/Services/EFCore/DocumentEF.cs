@@ -1,5 +1,6 @@
 ﻿using DocumentRepository.Models.Dtos;
 using DocumentRepository.Models.Entities;
+using DocumentRepository.Models.Services.Abstracts;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace DocumentRepository.Models.Services.EFCore
 {
     //TODO: сделать везде try catch на случай не удачных операций
-    public class DocumentEF : IDocument //возможно назвать DocumentRepository
+    public class DocumentEF : IDocumentRep //возможно назвать DocumentRepository
     {
         public void AddDocument(List<byte> file) //может Document должно быть
         {
@@ -34,7 +35,8 @@ namespace DocumentRepository.Models.Services.EFCore
         {
             using (var context = new ContextEF())
             {
-                var document = context.Documents.FirstOrDefault(doc => doc.Id == id);
+                //var document = context.Documents.FirstOrDefault(doc => doc.Id == id);
+                var document = new Document { Id = id }; //проверить работает ли так
                 context.Documents.Remove(document);
                 context.SaveChanges();
             }

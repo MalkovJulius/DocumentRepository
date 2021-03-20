@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DocumentRepository.Models.Services
+namespace DocumentRepository.Models.Services.Abstracts
 {
     /// <summary>
     /// Интерфейс для работы с ORM по документам
     /// </summary>
-    interface IDocument
+    interface IDocumentRep
     {
         /// <summary>
         /// Добавляет документ в БД

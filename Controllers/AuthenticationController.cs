@@ -12,7 +12,7 @@ namespace DocumentRepository.Controllers
 {
     public class AuthenticationController : Controller
     {
-        readonly IAccount _account = new AccountEF();
+        readonly IAccountRep _account = new AccountEF();
         //если использовать фабрику, то тут сделать конструктор с IAccount
 
         [HttpGet]

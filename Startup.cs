@@ -1,6 +1,10 @@
+using DocumentRepository.Models.Services;
+using DocumentRepository.Models.Services.Abstracts;
+using DocumentRepository.Models.Services.EFCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +28,23 @@ namespace DocumentRepository
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //подключаю конфиг из appsetting.json
+            Configuration.Bind("Project", new Config());
+
+            services.AddTransient<IAccountRep, AccountEF>();
+            services.AddTransient<IDocumentRep, DocumentEF>();
+            //services.AddTransient<DataManager>(); //If I will use it
+
+            //подключаю контекст ДБ
+            services.AddDbContext<ContextEF>(con => con.UseSqlServer(Config.ConnectionString));
+
+            //настраиваю аутентификацию
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "DocRepAuth";
+                options.LoginPath = "/Authentication/SignIn";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

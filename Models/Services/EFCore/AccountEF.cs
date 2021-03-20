@@ -1,5 +1,6 @@
 ﻿using DocumentRepository.Models.Dtos;
 using DocumentRepository.Models.Entities;
+using DocumentRepository.Models.Services.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DocumentRepository.Models.Services.EFCore
 {
-    public class AccountEF : IAccount //может статическим
+    public class AccountEF : IAccountRep //может статическим
     {
         /// <summary>
         /// Класс по работе с БД через EFCore

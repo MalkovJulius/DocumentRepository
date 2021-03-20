@@ -25,7 +25,9 @@ namespace DocumentRepository.Models.Services.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=DocumentRepository;Trusted_Connection=True;");
+            //либо тут либо в startup файле использовать подключение к БД
+            //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=DocumentRepository;Trusted_Connection=True;");
+
             optionsBuilder.LogTo(logger.WriteLine, LogLevel.Error);
         }
 
