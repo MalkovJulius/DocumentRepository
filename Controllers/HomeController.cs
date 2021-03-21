@@ -9,9 +9,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DocumentRepository.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -53,7 +55,7 @@ namespace DocumentRepository.Controllers
 
 
         [HttpGet]
-        public ActionResult AddFile()
+        public IActionResult AddFile()
         {
             return View();//Open view for add new document
         }
@@ -102,7 +104,7 @@ namespace DocumentRepository.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetCurrentDocuments(int id, string text)
+        public IActionResult GetCurrentDocuments(int id, string text)
         {
             return View(_document.GetCurrentDocuments(id, text));
         }

@@ -1,7 +1,10 @@
 ﻿using DocumentRepository.Models.Dtos;
 using DocumentRepository.Models.Entities;
 using DocumentRepository.Models.Services;
+using DocumentRepository.Models.Services.Abstracts;
 using DocumentRepository.Models.Services.EFCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,19 +13,30 @@ using System.Threading.Tasks;
 
 namespace DocumentRepository.Controllers
 {
+    [Authorize]
     public class AuthenticationController : Controller
     {
         readonly IAccountRep _account = new AccountEF();
         //если использовать фабрику, то тут сделать конструктор с IAccount
 
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<IdentityUser> signInManager;
+
+        public AuthenticationController(UserManager<IdentityUser> userMan, SignInManager<IdentityUser> signInMan)
+        {
+            userManager = userMan;
+            signInManager = signInMan;
+        }
+
         [HttpGet]
-        public ActionResult SignIn()
+        [AllowAnonymous]
+        public IActionResult SignIn()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult SignIn(AccountDto accountDto)
+        public IActionResult SignIn(AccountDto accountDto)
         {
             try
             {
@@ -41,20 +55,20 @@ namespace DocumentRepository.Controllers
             }
         }
 
-        public ActionResult SignOut()
+        public IActionResult SignOut()
         {
             //TODO: 
             return View("SignIn");
         }
 
         [HttpGet]
-        public ActionResult SignUp()
+        public IActionResult SignUp()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult SignUp(AccountDto accountDto)
+        public IActionResult SignUp(AccountDto accountDto)
         {
             try
             {

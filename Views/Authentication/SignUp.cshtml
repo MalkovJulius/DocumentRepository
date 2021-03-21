@@ -32,20 +32,22 @@
             <h2>Registration Here</h2>
 
             <div class="form-input">
-                <label for="name">Full name</label>
-                <input type="text" name="name" placeholder="Full name">
-            </div>
-            <div class="form-input">
-                <label for="name">Email Address</label>
-                <input type="email" name="email" placeholder="Email Address">
+                <label for="name">Login</label>
+                <input type="text" name="Login" placeholder="Full name" alphanum required>
+                <div class="valid-feedback">Valid</div>
+                <div class="invalid-feedback">Пожалуйста, заполните поле</div>
             </div>
             <div class="form-input">
                 <label for="name">Password</label>
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="Password" placeholder="Password" min="6" required>
+                <div class="valid-feedback">Valid</div>
+                <div class="invalid-feedback">Пожалуйста, заполните поле</div>
             </div>
             <div class="form-input">
                 <label for="name">Confirm Password</label>
-                <input type="password" name="password" placeholder="Confirm Password">
+                <input type="password" name="PasConfirm" placeholder="Confirm Password" min="6" matches="Password" required>
+                <div class="valid-feedback">Valid</div>
+                <div class="invalid-feedback">Пожалуйста, заполните поле</div>
             </div>
             <div class="form-input pt-30">
                 <input type="submit" name="submit" value="Registration">
